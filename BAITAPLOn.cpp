@@ -26,7 +26,7 @@ int chonhang()
 	int i=0;
 while(GH!=0)	
 { 
-	printf("Ten San Pham: ");
+	printf("\nTen San Pham: ");
 	fflush(stdin);
 	gets(giohang_st.dssp[i].tensp);
 	printf("Nhap Gia: ");
@@ -36,7 +36,7 @@ while(GH!=0)
 	giohang_st.sosanpham++;
 	i++;
 	printf("\n Khach Hang co muon tiep tuc chon hang Khong: ");
-	printf("\n Nhap 1 neu Co va Nhap 0 neu Khong : ");
+	printf("\n Nhap 1 neu 'Co' va Nhap 0 neu 'Khong' : ");
 	scanf("%d", &GH);
 }
 }
@@ -44,9 +44,9 @@ void xemchitiet()
 { 	int i,j;
 	struct sp_st Doi;
 	printf("\n %-10s    %-10s    %-10s    %-10s \n","STT","Ten San Pham","Gia","So Luong");
-	for( i=0;i<giohang_st.sosanpham-2;i++)
+	for( i=0;i<giohang_st.sosanpham-1;i++)
 	{
-			for(j=i+1;j<giohang_st.sosanpham-1;j++)
+			for(j=i+1;j<giohang_st.sosanpham;j++)
 		{
 				if(strcmp(giohang_st.dssp[i].tensp,giohang_st.dssp[j].tensp)>0)
 				{
@@ -62,36 +62,54 @@ void loaibomathang(){
 	int n,i;
 	do
 	{
-	printf("\nNhap vi tri san pham can loai bo: ");
+	printf("\nCan loai bo san pham thu may:  ");
 	scanf("%d",&n);
-	if(n<1 || n>giohang_st.sosanpham) printf("\nVi tri san phan khong hop le. Xin nhap lai vi tri! ");
+	if(n<1 || n>giohang_st.sosanpham) printf("\nVi tri san phan khong hop le. Xin nhap lai vi tri!  ");
 	}while(n<1 || n>giohang_st.sosanpham);
 	for( i=n-1;i<giohang_st.sosanpham;i++)
 		giohang_st.dssp[i]=giohang_st.dssp[i+1];
 	giohang_st.sosanpham=giohang_st.sosanpham-1;
 }
-	void luu(){
+
+void ghi(){
 	FILE *fp;
 	int i;
-	fp = fopen("cart.dat","wb");
-	fprintf(fp,"%-10s   %-10s   %-10s   %-10s	\n","STT","Ten san pham","Gia","So luong");
-	for( i=0;i<giohang_st.sosanpham;i++)
-		{
-		fprintf(fp,"%-10d   %-10s   %-10d   %-10d	\n",i+1,giohang_st.dssp[i].tensp,giohang_st.dssp[i].gia,giohang_st.dssp[i].soluong);
-		}
+	fp=fopen("E:\\khanh.dat","w");
+	
+	fprintf(fp,"\n %-10s    %-10s    %-10s    %-10s \n","STT","Ten San Pham","Gia","So Luong");
+	for(i=0;i<giohang_st.sosanpham;i++)
+{
+	fprintf(fp,"%-10d    %-10s      %-10d     %-10d \n",i+1,giohang_st.dssp[i].tensp,giohang_st.dssp[i].gia,giohang_st.dssp[i].soluong);			
+}
 	fclose(fp);
+
+	}
+void doc(){
+	FILE *fp;
+	int i;
+	fp=fopen("E:\\khanh.dat","r");
+	fscanf(fp,"\n %-10s    %-10s    %-10s    %-10s \n","STT","Ten San Pham","Gia","So Luong");
+	for(i=0;i<giohang_st.sosanpham;i++)
+{
+	fscanf(fp,"%-10d    %-10s      %-10d     %-10d \n",i+1,&giohang_st.dssp[i].tensp,&giohang_st.dssp[i].gia,&giohang_st.dssp[i].soluong);			
 }
 
+	fclose(fp);
+}
+void luu(){
+	ghi();
+	doc();
+}
 void Menu()
 {  int a;
 do{
         printf("\n\n********************************************************************\n");
-        printf("**       CHUONG TRINH QUAN LY SAN PHAM                            **\n");
+        printf("**       CHUONG TRINH QUAN LY GIO HANG                            **\n");
         printf("**        1. Tao gio hang                                         **\n");
-        printf("**        2. Chon hang                                            **\n");
+        printf("**        2.  Chon hang                                           **\n");
         printf("**        3. Xem chi tiet gio hang                                **\n");
         printf("**        4. Loai bo mot mat hang                                 **\n"); 
-		printf("**        5. Ghi toan bo noi dung vao tep nhi phan cart.dat       **\n");
+		printf("**        5.Ghi toan bo noi dung vao tep van ban  cart.dat        **\n");
         printf("**        6. Thoat                                                **\n");
       	printf("********************************************************************\n");
 
