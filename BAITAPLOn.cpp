@@ -109,7 +109,7 @@ do{
         printf("**        2.  Chon hang                                           **\n");
         printf("**        3. Xem chi tiet gio hang                                **\n");
         printf("**        4. Loai bo mot mat hang                                 **\n"); 
-		printf("**        5.Ghi toan bo noi dung vao tep van ban  cart.dat        **\n");
+	printf("**        5.Ghi toan bo noi dung vao tep van ban  cart.dat        **\n");
         printf("**        6. Thoat                                                **\n");
       	printf("********************************************************************\n");
 
