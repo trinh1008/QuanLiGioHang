@@ -25,19 +25,40 @@ int chonhang()
 {	int GH;
 	int i=0;
 while(GH!=0)	
-{ 
-	printf("\nTen San Pham: ");
+{   
+	printf("1. Banh mi\n");
+	printf("2. Mi tom\n");
+    int luachon; 
+    printf("Nhap vao lua chon cua ban\n"); 
+    scanf("%d",&luachon);
+    switch(luachon)
+    {
+    	case 1: {printf("\nTen San Pham: Banh mi");
 	fflush(stdin);
-	gets(giohang_st.dssp[i].tensp);
-	printf("Nhap Gia: ");
-	scanf("%d",&giohang_st.dssp[i].gia);
-	printf("Nhap So Luong: ");
+	strcpy(giohang_st.dssp[i].tensp,"Banh mi");
+	printf("\nGia: 5000 VND "); giohang_st.dssp[i].gia=5000;
+	printf("Nhap So Luong can mua: ");
+	scanf("%d",&giohang_st.dssp[i].soluong);
+	printf("\n Khach Hang co muon tiep tuc chon hang Khong: ");
+	printf("\n Nhap 1 neu Co va Nhap 0 neu Khong : ");
+	scanf("%d", &GH); 
+	giohang_st.sosanpham++;
+	i++;
+	
+	break; }
+        case 2: {printf("\nTen San Pham: Mi tom");
+	fflush(stdin);
+	strcpy(giohang_st.dssp[i].tensp,"Mi tom");
+	printf("\nGia: 3000 VND "); giohang_st.dssp[i].gia=3000;
+	printf("Nhap So Luong can mua: ");
 	scanf("%d",&giohang_st.dssp[i].soluong);
 	giohang_st.sosanpham++;
 	i++;
 	printf("\n Khach Hang co muon tiep tuc chon hang Khong: ");
-	printf("\n Nhap 1 neu 'Co' va Nhap 0 neu 'Khong' : ");
-	scanf("%d", &GH);
+	printf("\n Nhap 1 neu Co va Nhap 0 neu Khong : ");
+	scanf("%d", &GH); break;}
+    }
+	
 }
 }
 void xemchitiet()
@@ -109,7 +130,7 @@ do{
         printf("**        2.  Chon hang                                           **\n");
         printf("**        3. Xem chi tiet gio hang                                **\n");
         printf("**        4. Loai bo mot mat hang                                 **\n"); 
-	printf("**        5.Ghi toan bo noi dung vao tep van ban  cart.dat        **\n");
+		printf("**        5.Ghi toan bo noi dung vao tep van ban  cart.dat        **\n");
         printf("**        6. Thoat                                                **\n");
       	printf("********************************************************************\n");
 
